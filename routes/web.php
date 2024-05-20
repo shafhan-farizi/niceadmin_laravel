@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 //route route
@@ -20,3 +21,5 @@ Route::get('/', function () {
 // dashboard
 Route::get('admin/dashboard',[DashboardController::class,'index']);
 
+// student
+Route::get('admin/student', [StudentController::class, 'index']);
