@@ -16,8 +16,15 @@
 
       <li class="nav-item">
         <a class="nav-link @if ($currentRoute!= 'admin/student') collapsed @endif" href="/admin/student">
-          <i class="bi bi-journal-text"></i><span>Student</span>
+          <i class="bi bi-person-circle"></i><span>Student</span>
         </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link @if ($currentRoute!= 'admin/course') collapsed @endif" href="/admin/course">
+          <i class="bi bi-journal-text"></i><span>Course</span>
+        </a>
+      </li>
     
 
    

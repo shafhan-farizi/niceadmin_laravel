@@ -8,8 +8,8 @@
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
-        <li class="breadcrumb-item active">Student</li>
-        <li class="breadcrumb-item"><a href="/admin/course">Course</a></li>
+        <li class="breadcrumb-item"><a href="/admin/student">Student</a></li>
+        <li class="breadcrumb-item active">Course</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -23,17 +23,15 @@
             <tr>
               <th>No</th>
               <th>Name</th>
-              <th>NIM</th>
-              <th>Major</th>
-              <th>Class</th>
+              <th>Category</th>
+              <th>Description</th>
             </tr>
-            @foreach ($students as $student)
+            @foreach ($courses as $course)
               <tr class="my-2">
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $student->name }}</td>
-                <td>{{ $student->nim }}</td>
-                <td>{{ $student->major }}</td>
-                <td>{{ $student->class }}</td>
+                <td>{{ $course->name }}</td>
+                <td>{{ $course->category }}</td>
+                <td>{{ $course->description }}</td>
                 <td>
                   <a href="#" class="btn btn-warning">Edit</a>
                   <a href="#" class="btn btn-danger">Delete</a>

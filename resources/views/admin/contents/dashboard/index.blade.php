@@ -7,9 +7,9 @@
     <h1>Dashboard</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
-        <li class="breadcrumb-item">Pages</li>
         <li class="breadcrumb-item active">Dashboard</li>
+        <li class="breadcrumb-item"><a href="/admin/student">Student</a> </li>
+        <li class="breadcrumb-item"><a href="/admin/course">Course</a></li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
