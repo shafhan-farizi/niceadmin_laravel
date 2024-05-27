@@ -9,7 +9,6 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
         <li class="breadcrumb-item active">Student</li>
-        <li class="breadcrumb-item"><a href="/admin/course">Course</a></li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -17,7 +16,7 @@
   <section class="section">
     <div class="card">
       <div class="card-body py-4">
-        <a href="/admin/student/create" class="btn btn-primary my-4">+ Student</a>
+        <a href="{{ route('student.create') }}" class="btn btn-primary my-4">+ Student</a>
         <div class="table-responsive">
           <table class="table">
             <tr>
@@ -37,7 +36,7 @@
                 <td>
                 <div class="d-flex">
                     <a href="{{ route('student.edit', $student->id) }}" class="btn btn-warning me-2">Edit</a>
-                    <form action="{{ route('student.destroy', $student->id) }}" method="post"">
+                    <form action="{{ route('student.destroy', $student->id) }}" method="post">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-danger">Delete</button>

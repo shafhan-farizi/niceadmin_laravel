@@ -8,6 +8,7 @@
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('student.index') }}">Student</a></li>
         <li class="breadcrumb-item active">+ Student</li>
       </ol>
     </nav>
@@ -16,7 +17,7 @@
   <section class="section">
     <div class="card">
       <div class="card-body py-4">
-        <form action="/admin/student/create" method="post" class="mt-3">
+        <form action="{{ route('student.store') }}" method="post" class="mt-3">
           @csrf
             <div class="mb-2">
                 <label for="name" class="form-label">Name</label>
