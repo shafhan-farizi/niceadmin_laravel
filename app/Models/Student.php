@@ -11,4 +11,7 @@ class Student extends Model
 
     protected $table = 'students';
     protected $guarded = ['id'];
+
+    // mendefinisikan field yang boleh diisi
+    protected $fillable = ['name', 'nim', 'major', 'class'];
 }

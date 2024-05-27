@@ -24,6 +24,11 @@ Route::get('admin/dashboard',[DashboardController::class,'index']);
 
 // student
 Route::get('admin/student', [StudentController::class, 'index']);
+Route::get('admin/student/create', [StudentController::class, 'create']);
+Route::post('admin/student/create', [StudentController::class, 'store']);
+Route::get('admin/student/edit/{id}', [StudentController::class, 'edit'])->name('student.edit');
+Route::put('admin/student/edit/{id}', [StudentController::class, 'update'])->name('student.update');
+Route::delete('admin/student/delete/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
 
 // course
 Route::get('admin/course', [CourseController::class, 'index']);
