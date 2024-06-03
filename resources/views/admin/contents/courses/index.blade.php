@@ -24,6 +24,7 @@
               <th>Name</th>
               <th>Category</th>
               <th>Description</th>
+              <th>Action</th>
             </tr>
             @foreach ($courses as $course)
               <tr class="my-2">
@@ -33,7 +34,7 @@
                 <td>{{ $course->description }}</td>
                 <td>
                   <div class="d-flex">
-                    <a href="{{ route('course.edit', $course->id) }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ route('course.edit', $course->id) }}" class="btn btn-warning me-2">Edit</a>
                     <form action="{{ route('course.destroy', $course->id) }}" method="post">
                         @csrf
                         @method('delete')

@@ -26,6 +26,7 @@
               <th>Major</th>
               <th>Class</th>
               <th>Course</th>
+              <th>Action</th>
             </tr>
             @foreach ($students as $student)
               <tr class="my-2">
@@ -37,7 +38,7 @@
                 <td>{{ $student->nim }}</td>
                 <td>{{ $student->major }}</td>
                 <td>{{ $student->class }}</td>
-                <td>{!! \Carbon\Carbon::parse($created_at)->diffForHumans() ?? '<span class="badge bg-danger">Belum Mengikuti Course</span>' !!}</td>
+                <td>{!! $student->course->name ?? '<span class="badge bg-danger">Belum Mengikuti Course</span>' !!}</td>
                 <td>
                 <div class="d-flex">
                     <a href="{{ route('student.edit', $student->id) }}" class="btn btn-warning me-2">Edit</a>

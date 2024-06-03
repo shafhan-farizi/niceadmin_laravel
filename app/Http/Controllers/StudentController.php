@@ -51,21 +51,32 @@ class StudentController extends Controller
     public function edit($id) {
         // cari student berdasarkan id
         $student = Student::find($id); // Select * FROM students WHERE id = $id;
+        $courses = Course::all();
 
         // kirim student ke view edit
         return view('admin.contents.students.edit', [
-            'student' => $student
+            'student' => $student,
+            'courses' => $courses
         ]);
     }
 
     public function update($id, Request $request) {
         $student = Student::find($id);
 
+        $request->validate([
+            'name' => 'required',
+            'nim' => 'required|numeric',
+            'major' => 'required',
+            'class' => 'required',
+            'course_id' => 'nullable|numeric'
+        ]);
+
         $student->update([
             'name' => $request->name,
             'nim' => $request->nim,
             'major' => $request->major,
-            'class' => $request->class
+            'class' => $request->class,
+            'course_id' => $request->course_id
         ]);
 
         return redirect('/admin/student')->with('pesan', 'Berhasil mengubah data.');
