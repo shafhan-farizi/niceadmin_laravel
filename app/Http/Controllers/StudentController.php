@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,10 @@ class StudentController extends Controller
     }
 
     public function create() {
-        return view('admin.contents.students.create');
+        $courses = Course::all();
+        return view('admin.contents.students.create', [
+            'courses' => $courses
+        ]);
     }
 
     public function store(Request $request) {
@@ -27,7 +31,8 @@ class StudentController extends Controller
             'name' => 'required',
             'nim' => 'required|numeric',
             'major' => 'required',
-            'class' => 'required'
+            'class' => 'required',
+            'course_id' => 'nullable|numeric'
         ]);
 
         // Simpan ke database
@@ -35,7 +40,8 @@ class StudentController extends Controller
             'name' => $request->name,
             'nim' => $request->nim,
             'major' => $request->major,
-            'class' => $request->class
+            'class' => $request->class,
+            'course_id' => $request->course_id
         ]);
 
         // Arahkan ke halaman student index

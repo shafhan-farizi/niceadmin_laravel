@@ -32,7 +32,7 @@
             <div class="mb-2">
                 <label for="major" class="form-label">Major</label>
                 <select name="major" id="major" class="form-select">
-                    <option value="">Pilih Jurusan</option>
+                    <option disabled selected>Pilih Jurusan</option>
                     <option value="Teknik Informatika">Teknik Informatika</option>
                     <option value="Sistem Informasi">Sistem Informasi</option>
                     <option value="Bisnis Digital">Bisnis Digital</option>
@@ -41,7 +41,32 @@
 
             <div class="mb-2">
                 <label for="class" class="form-label">Class</label>
-                <input type="text" name="class" id="class" class="form-control">
+                <select name="class" id="class" class="form-select">
+                    <option disabled selected>Pilih Kelas</option>
+                    <optgroup label="Teknik Informatika">
+                      @for ($i = 0; $i < 9; $i++)
+                      <option value="TI-0{{ $i + 1 }}">TI-0{{ $i + 1 }}</option>
+                      @endfor
+                    </optgroup>
+                    <optgroup label="Sistem Informatika">
+                      @for ($i = 0; $i < 10; $i++)
+                      <option value="SI-{{ $i + 1 != 10 ? 0 : '' }}{{ $i + 1 }}">SI-{{ $i + 1 != 10 ? 0 : '' }}{{ $i + 1 }}</option>
+                      @endfor 
+                    </optgroup>
+                    <optgroup label="Basis Data">
+                      <option value="BD-01">BD-01</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="mb-2">
+                <label for="course_id" class="form-label">Course</label>
+                <select name="course_id" id="course_id" class="form-select">
+                    <option disabled selected>Pilih Kursus</option>
+                    @foreach ($courses as $course)
+                    <option value="{{ $course->id }}">{{ $course->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="mb-4">

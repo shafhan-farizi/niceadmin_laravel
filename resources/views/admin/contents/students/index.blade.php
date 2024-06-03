@@ -25,14 +25,19 @@
               <th>NIM</th>
               <th>Major</th>
               <th>Class</th>
+              <th>Course</th>
             </tr>
             @foreach ($students as $student)
               <tr class="my-2">
+                @php
+                  $created_at = $student->course->created_at ?? 0
+                @endphp
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $student->name }}</td>
                 <td>{{ $student->nim }}</td>
                 <td>{{ $student->major }}</td>
                 <td>{{ $student->class }}</td>
+                <td>{!! \Carbon\Carbon::parse($created_at)->diffForHumans() ?? '<span class="badge bg-danger">Belum Mengikuti Course</span>' !!}</td>
                 <td>
                 <div class="d-flex">
                     <a href="{{ route('student.edit', $student->id) }}" class="btn btn-warning me-2">Edit</a>
