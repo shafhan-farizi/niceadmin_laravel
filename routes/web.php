@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StudentController;
-use Illuminate\Support\Facades\Route;
 
 //route route
 Route::get('/', function () {
@@ -19,8 +20,13 @@ Route::get('/', function () {
 //4 Delete di gunakan untk menghapus data 
 
 
-// dashboard
-Route::get('admin/dashboard',[DashboardController::class,'index']);
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    // dashboard
+Route::get('admin/dashboard',[DashboardController::class,'index'])->name('dashboard');
 
 // student
 Route::get('admin/student', [StudentController::class, 'index'])->name('student.index');
@@ -37,3 +43,10 @@ Route::post('admin/course/create', [CourseController::class, 'store'])->name('co
 Route::get('admin/course/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
 Route::put('admin/course/edit/{id}', [CourseController::class, 'update'])->name('course.update');
 Route::delete('admin/course/delete/{id}', [CourseController::class, 'destroy'])->name('course.destroy');
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
